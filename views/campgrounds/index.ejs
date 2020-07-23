@@ -1,0 +1,48 @@
+<!-- we are doing the ../ before partials here because we changed the directory for our index,ejs inviews to have all campgrounds and comments routes their own folders -->
+<%- include("../partials/header") %>
+
+<div class="container">
+	<header class="jumbotron">
+		<div class="container">
+			<h1>Welcome to YelpCamp!</h1>
+			<p>View our world-class campgrounds</p>
+			<p>
+				<a class="btn btn-primary btn-lg" href="/campgrounds/new"> Add New Campground Here</a>	
+			</p>
+		</div>
+	</header>
+	<div class="row">
+		<div class="col-lg-12">
+			<h3>Our Most Popular Campgrounds</h3>
+		</div>
+	</div>
+	
+	<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+		<% campgrounds.forEach(function(campground){ %>
+			<div class="col-md-3 col-sm-6">
+				<!-- thumbnail class, a bootstrap class that makes a little card or grid item -->
+				<div class="thumbnail">
+					<img src="<%= campground.image %>">
+					<!-- put name of campground as caption in the image card, below image -->
+					<div class"caption">
+						<h4><%= campground.name %></h4>
+					</div>
+					<!-- adding paragraph that will take us to show route when we are clicking "more button"  						while we are on index or "/campgrunds" page to see additional info about a campgroud 						 -->
+					<!-- yelpCampground is the name in the forEach loop for a campground. Unlike image and name 	 	                   (campground.image or campground.name), id is found as campgroud._id from the forEach 	                     loop. If you inspect More Info, you can see on the a tag the id given to that campground by our db. Now, use that id inside of the show route (using findByid()) to get the specific id for each campground -->
+					<p>
+						<a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info </a>
+					</p>
+				</div>
+			</div>
+
+		<% }); %>
+	</div>
+
+</div>
+
+<%- include("../partials/footer") %>
+
+
+
+
+
