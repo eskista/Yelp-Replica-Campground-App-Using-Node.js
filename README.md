@@ -1,1 +1,1 @@
-# YelpCampground-App-Deployed-to-Heroku
+# YelpCampground-App-Deployed
